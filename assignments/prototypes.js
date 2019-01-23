@@ -35,7 +35,7 @@ GameObject.prototype.destroy = function () {return `${this.name} was removed fro
 // CharacterStats constructor
 function CharacterStats(characterStatsAttributes) {
   GameObject.call(this, characterStatsAttributes);
-  this.hp = characterStatsAttributes.hp;
+  this.healthPoints = characterStatsAttributes.healthPoints;
   this.name = characterStatsAttributes.name;
 }
 
@@ -57,7 +57,7 @@ CharacterStats.prototype.takeDamage = function () { return `${this.name} took da
 // Humanoid constructor
 function Humanoid(humanoidAttributes) {
   CharacterStats.call(this, humanoidAttributes);
-  this.faction = humanoidAttributes.faction;
+  this.team = humanoidAttributes.team;
   this.weapons = humanoidAttributes.weapons;
   this.language = humanoidAttributes.language;
 }
@@ -76,7 +76,7 @@ Humanoid.prototype.greet = function () { return `${this.name} offers a greeting 
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
-/*
+
   const mage = new Humanoid({
     createdAt: new Date(),
     dimensions: {
@@ -137,7 +137,7 @@ Humanoid.prototype.greet = function () { return `${this.name} offers a greeting 
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-*/
+
 
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
