@@ -158,3 +158,24 @@ Villian.prototype = Object.create(Humanoid.prototype);
 
 // link up the Humanoid prototype with the Hero prototype using Object.create() method
 Hero.prototype = Object.create(Humanoid.prototype);
+
+const gru =  new Villian({
+  createdAt: new Date(),
+  dimensions: {
+    length: 1,
+    width: 5,
+    height: 3,
+  },
+  healthPoints: 10000,
+  name: 'Gru',
+  team: 'Team Gru RULES',
+  weapons: [
+    'Laser Bubbler',
+    'Minion Swarm',
+  ],
+  language: 'English',
+});
+
+Villian.prototype.taunt = function () { return `${this.name} thumbs nose at you`; };
+
+console.log(gru.taunt());
