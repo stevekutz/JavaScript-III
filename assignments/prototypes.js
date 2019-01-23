@@ -15,6 +15,15 @@
   * destroy() // prototype method -> returns the string: 'Object was removed from the game.'
 */
 
+// GameObject constructor
+function GameObject(gameObjectAttributes) {
+  this.createdAt = gameObjectAttributes.createdAt;
+  this.dimensions = gameObjectAttributes.dimensions;
+}
+
+// add destroy method to GameObject
+GameObject.prototype.destroy = function () {return `${this.name} was removed from the game`;};
+
 /*
   === CharacterStats ===
   * healthPoints
@@ -23,6 +32,18 @@
   * should inherit destroy() from GameObject's prototype
 */
 
+// CharacterStats constructor
+function CharacterStats(characterStatsAttributes) {
+  GameObject.call(this, characterStatsAttributes);
+  this.hp = characterStatsAttributes.hp;
+  this.name = characterStatsAttributes.name;
+}
+
+// link up the GameObject prototype with the CharacterStats prototype using Object.create() method
+CharacterStats.prototype = Object.create(GameObject.prototype);
+
+// add takeDamage method to CharacterStats
+CharacterStats.prototype.takeDamage = function () { return `${this.name} took damage`; };
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
   * team
@@ -32,7 +53,21 @@
   * should inherit destroy() from GameObject through CharacterStats
   * should inherit takeDamage() from CharacterStats
 */
- 
+
+// Humanoid constructor
+function Humanoid(humanoidAttributes) {
+  CharacterStats.call(this, humanoidAttributes);
+  this.faction = humanoidAttributes.faction;
+  this.weapons = humanoidAttributes.weapons;
+  this.language = humanoidAttributes.language;
+}
+
+// link up the CharacterStats prototype with the Humanoid prototype using Object.create() method
+Humanoid.prototype = Object.create(CharacterStats.prototype);
+
+// add greet method to Humanoid
+Humanoid.prototype.greet = function () { return `${this.name} offers a greeting in ${this.language}`; };
+
 /*
   * Inheritance chain: GameObject -> CharacterStats -> Humanoid
   * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
