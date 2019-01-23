@@ -1,7 +1,8 @@
 /* The for principles of "this";
 * in your own words. explain the four principle for the "this" keyword below.
 *
-* 1. 
+* 1. Window Binding - this refers to the Global Object(window). Since there is nothing to left of dot,
+*    'this' defaults to the window obj
 * 2. 
 * 3. 
 * 4. 
