@@ -166,7 +166,7 @@ const gru =  new Villian({
     width: 5,
     height: 3,
   },
-  healthPoints: 10000,
+  healthPoints: 1000,
   name: 'Gru',
   team: 'Team Gru RULES',
   weapons: [
@@ -176,6 +176,43 @@ const gru =  new Villian({
   language: 'English',
 });
 
-Villian.prototype.taunt = function () { return `${this.name} thumbs nose at you`; };
 
-console.log(gru.taunt());
+const groot =  new Hero({
+  createdAt: new Date(),
+  dimensions: {
+    length: 2,
+    width: 4,
+    height: 10,
+  },
+  healthPoints: 1000,
+  name: 'Groot',
+  team: 'Guardians of the Galaxy',
+  weapons: [
+    'Vine wrap',
+    'Branch smack',
+  ],
+  language: 'Groot speak',
+});
+
+Villian.prototype.taunt = function () { return `${this.name} thumbs nose at you`; };
+Hero.prototype.taunt = function () { return `${this.name} stands proud`; };
+
+
+Villian.prototype.attack = function(obj, points){
+  obj.healthPoints -= points;
+  obj.takeDamage();
+  if(obj.healthPoints <=0) {
+    return obj.destroy();
+  }
+  return `${this.name} attacks ${obj.name} and takes out ${points} health points`
+};
+
+Hero.prototype.attack = function(obj, points){
+  obj.healthPoints -= points;
+  obj.takeDamage();
+  if(obj.healthPoints <=0) {
+    return obj.destroy();
+  }
+  return `${this.name} attacks ${obj.name} and takes out ${points} health points`
+};
+
