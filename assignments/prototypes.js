@@ -152,3 +152,9 @@ function Villian(villianAttributes) {
 function Hero(heroAttributes) {
   Humanoid.call(this, heroAttributes);
 }
+
+// link up the Humanoid prototype with the Villian prototype using Object.create() method
+Villian.prototype = Object.create(Humanoid.prototype);
+
+// link up the Humanoid prototype with the Hero prototype using Object.create() method
+Hero.prototype = Object.create(Humanoid.prototype);
