@@ -221,3 +221,6 @@ Hero.prototype.attack = function(obj, points){
             ${obj.name} now at ${obj.healthPoints} remaining;`
 };
 
+// DEBUG
+//gru.attack(groot, 100);
+//groot.attack(gru,200);
