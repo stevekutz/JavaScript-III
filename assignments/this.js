@@ -1,26 +1,51 @@
 /* The for principles of "this";
 * in your own words. explain the four principle for the "this" keyword below.
 *
-* 1. 
-* 2. 
-* 3. 
-* 4. 
+* 1. Window Binding - this refers to the Global Object(window). Since there is nothing to left of dot,
+*    'this' defaults to the window obj
+* 2. Implicit Binding - used within a method of an object(e.g. left of dot)
+* 3. Explicit Binding - this gets attached to another object assigned to a specific function(uses call, bind, apply)
+* 4. New Binding - this is used with constructor
 *
 * write out a code example of each explanation above
 */
 
-// Principle 1
+// Principle 1 - Window binding
 
-// code example for Window Binding
+ let sayName = function() {
+    console.log(`My name is ${this}`)
+ };
+ sayName();
 
-// Principle 2
+// Principle 2 - Implicit Binding
 
-// code example for Implicit Binding
+ let me = {
+   name: 'Steve',
+   sayName: function() {
+     console.log(`${this.name}`);
+   }
+ };
 
-// Principle 3
+ me.sayName();
 
-// code example for New Binding
+// Principle 3 - Explicit Binding
 
-// Principle 4
+  let me2 = {
+    name: 'Gru'
+  };
 
-// code example for Explicit Binding
+  let  sayName2 = function() {
+    console.log(`My name is also ${this.name}`);
+  };
+
+  sayName2.call(me2);
+
+// Principle 4 - New Binding
+
+  let Animal = function(color, name, type){
+    this.color = color;
+    this.name = name;
+    this.type = type;
+  };
+
+  let labrador = new Animal('black', 'Maggie', 'dog');
