@@ -202,17 +202,22 @@ Villian.prototype.attack = function(obj, points){
   obj.healthPoints -= points;
   obj.takeDamage();
   if(obj.healthPoints <=0) {
+    console.log(`${this.team} wins !!!!`);
     return obj.destroy();
   }
-  return `${this.name} attacks ${obj.name} and takes out ${points} health points`
+  return `${this.name} attacks ${obj.name} and takes out ${points} health points \n\t
+            ${obj.name} now at ${obj.healthPoints} remaining;`
+
 };
 
 Hero.prototype.attack = function(obj, points){
   obj.healthPoints -= points;
   obj.takeDamage();
   if(obj.healthPoints <=0) {
+    console.log(`${this.team} wins !!!!`);
     return obj.destroy();
   }
-  return `${this.name} attacks ${obj.name} and takes out ${points} health points`
+  return `${this.name} attacks ${obj.name} and takes out ${points} health points \n\t
+            ${obj.name} now at ${obj.healthPoints} remaining;`
 };
 
